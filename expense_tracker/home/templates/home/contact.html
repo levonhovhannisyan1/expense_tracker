@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'home/contact.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Expense Tracker</h1>
+            <nav>
+                <a href="{% url 'home:home' %}" class="btn">Home</a>
+                <a href="{% url 'home:about' %}" class="btn">About Us</a>
+                <a href="{% url 'users:signin' %}" class="btn">Sign in</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <form action="{% url 'home:contact' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

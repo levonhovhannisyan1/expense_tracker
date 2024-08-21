@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'home/about.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Expense Tracker</h1>
+            <nav>
+                <a href="{% url 'home:home' %}" class="btn">Home</a>
+                <a href="{% url 'home:contact' %}" class="btn">Contact Us</a>
+                <a href="{% url 'users:signin' %}" class="btn">Sign in</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="about">
+            <h2>About Us</h2>
+            <p>Welcome to Expense Tracker! We are dedicated to helping you manage your finances effortlessly. Our tool is designed to give you insights into your spending and help you set and achieve your financial goals.</p>
+            <p>Our team is composed of finance experts and tech enthusiasts who believe in the power of budgeting and tracking to improve financial health. We are committed to providing you with the best tools and support for your financial journey.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

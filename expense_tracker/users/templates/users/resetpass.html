@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'users/resetpass.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Expense Tracker</h1>
+            <nav>
+                <a href="{% url 'home:home' %}" class="btn">Home</a>
+                <a href="{% url 'home:about' %}" class="btn">About Us</a>
+                <a href="{% url 'home:contact' %}" class="btn">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="reset-password">
+            <h2>Reset Your Password</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <i>{{ message }}</i>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'users:resetpass' %}" method="post">
+                {% csrf_token %}
+                <label for="code">Verification Code:</label>
+                <input type="text" id="code" name="code" required>
+                <label for="new_password">New Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+                <label for="confirm_password">Confirm New Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>  
+                <button type="submit" class="btn-primary">Reset Password</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>
