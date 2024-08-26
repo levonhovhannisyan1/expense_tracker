@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'usersprofile/profile.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    Here is your profile {{username}}
+    <form action="{% url 'users:signout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">sign out</button>
+    </form>
+</body>
+</html>

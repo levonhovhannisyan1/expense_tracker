@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from email.message import EmailMessage
 import smtplib
 import ssl
@@ -19,7 +18,7 @@ def receive_email_message_from_customer(name, email, message_content):
     email_password = 'gscc dmzh ljxs thdf'
     email_receiver = 'levon.hovhannisyan2020@gmail.com'
     subject = 'Message From Customer'
-    body = 'From: {} - {}\nThe message: {}'.format(name, email, message_content)
+    body = 'From:\n{}   -   {}\n\nThe message: {}'.format(name, email, message_content)
 
     em = EmailMessage()
     em['From'] = email_sender
@@ -68,6 +67,7 @@ def contact(request):
         send_email_message_to_customer(name, email)
 
         return redirect('home:home')
+    
     else:
         return render(request, 'home/contact.html', {})
 

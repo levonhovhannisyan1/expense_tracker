@@ -132,10 +132,11 @@ main {
     text-decoration: underline;
 }
 
-.signin i {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-    color: #ffffff;
+.message {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 30px 0;
+    color: #ff5300;
 }
 
 footer {

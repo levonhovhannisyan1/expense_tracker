@@ -24,17 +24,19 @@
             <h2>Reset Your Password</h2>
             {% if messages %}
                 {% for message in messages %}
+                <div class="message">
                     <i>{{ message }}</i>
+                </div>
                 {% endfor %}
             {% endif %}
             <form action="{% url 'users:resetpass' %}" method="post">
                 {% csrf_token %}
                 <label for="code">Verification Code:</label>
                 <input type="text" id="code" name="code" required>
-                <label for="new_password">New Password:</label>
-                <input type="password" id="new_password" name="new_password" required>
-                <label for="confirm_password">Confirm New Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>  
+                <label for="password1">New Password:</label>
+                <input type="password" id="password1" name="password1" required>
+                <label for="password2">Confirm New Password:</label>
+                <input type="password" id="password2" name="password2" required>  
                 <button type="submit" class="btn-primary">Reset Password</button>
             </form>
         </section>

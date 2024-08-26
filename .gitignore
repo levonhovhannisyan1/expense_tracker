@@ -1,6 +1,7 @@
 # Custom 
 expense_tracker/home/migrations
 expense_tracker/users/migrations
+expense_tracker/usersprofile/migrations
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

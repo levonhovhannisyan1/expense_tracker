@@ -24,15 +24,17 @@
             <h2>Forgot Password</h2>
             {% if messages %}
                 {% for message in messages %}
+                <div class="message">
                     <i>{{ message }}</i>
+                </div>
                 {% endfor %}
             {% endif %}
             <form action="{% url 'users:forgotpass' %}" method="post">
                 {% csrf_token %}
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <p>We will send a Verification Code to your Email</p>
-                <p>DO NOT TELL IT ANYONE.</p>
+                <p>We will send a Verification Code to your Email.</p>
+                <p>Do not tell it anyone.</p>
                 <button type="submit" class="btn-primary">Reset Password</button>
             </form>
         </section>

@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
     'home.apps.HomeConfig',
+    'users.apps.UsersConfig',
+    'usersprofile.apps.UsersprofileConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Session will expire when the browser is closed
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
+# Keep session alive for a specific time
+# 45 minutes in seconds
+
+SESSION_COOKIE_AGE = 10
