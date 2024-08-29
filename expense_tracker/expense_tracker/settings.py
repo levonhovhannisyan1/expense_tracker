@@ -133,6 +133,6 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 # Keep session alive for a specific time
-# 45 minutes in seconds
+# 40 minutes in seconds
 
-SESSION_COOKIE_AGE = 10
+SESSION_COOKIE_AGE = 2400

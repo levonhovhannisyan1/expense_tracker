@@ -8,8 +8,19 @@ from django.contrib import messages
 @never_cache
 def profile(request, username):
              
-    if request.user.is_authenticated and request.user.username == username:
-            return render(request, 'usersprofile/profile.html', {'username': username})
+    if request.user.is_authenticated and request.user.username == str(username):
+            return render(
+                 request, 
+                 'usersprofile/profile.html', 
+                 
+                 {
+                  'firstname': request.user.first_name, 
+                  'lastname': request.user.last_name, 
+                  'username': request.user.username, 
+                  'email': request.user.email,
+                 }
+
+                )
 
     else:
         messages.error(request, 'You need authenticate first.')

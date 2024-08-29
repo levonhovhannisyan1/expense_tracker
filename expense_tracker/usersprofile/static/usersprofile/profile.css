@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2e7d32;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #555;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+nav a:hover {
+    background-color: #777;
+}
+
+main {
+    flex: 1;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+
+.profile {
+    padding: 20px;
+    margin: 0 75px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.profile h1 {
+    text-align: left;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.sections {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.left-sections {
+    flex-basis: 35%;
+}
+
+.user-info,
+.recent-expenses,
+.dashboard,
+.expense-reports,
+.settings {
+    background-color: #1b5e20;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.expense-reports, .settings {
+    height: 290px;
+}
+
+.user-info img {
+    border-radius: 20px 40px 40px;
+    height: 100px;
+    width: 100px;
+}
+
+.user-info p, .dashboard p {
+    font-size: 18px;
+}
+
+.right-sections {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.right-sections-subsection {
+    display: flex;
+    gap: 20px;
+}
+
+.expense-reports, .settings {
+    flex-basis: 100%;
+}
+
+.button {
+    background-color: #2cda00;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #002909;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .sections {
+        flex-direction: column;
+    }
+    
+    .right-sections-subsection {
+        flex-direction: column;
+    }
+    
+    .user-info img {
+        height: 80px;
+        width: 80px;
+    }
+    
+    .left-sections,
+    .right-sections {
+        flex-basis: 100%;
+    }
+}
