@@ -11,19 +11,28 @@
 <body>
     <header>
         <div class="container">
-            <h1>Expense Tracker</h1>
+            <a href="{% url 'home:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
             <nav>
-                <a href="{% url 'home:home' %}" class="btn">Home</a>
+                <a href="{% url 'home:about' %}" class="btn">About Us</a>
                 <a href="{% url 'home:contact' %}" class="btn">Contact Us</a>
-                <a href="{% url 'users:signin' %}" class="btn">Sign in</a>
+                <a href="{% url 'users:signin' %}" class="btn signin-btn">Sign in</a>
             </nav>
         </div>
     </header>
     <main>
         <section class="about">
             <h2>About Us</h2>
-            <p>Welcome to Expense Tracker! We are dedicated to helping you manage your finances effortlessly. Our tool is designed to give you insights into your spending and help you set and achieve your financial goals.</p>
-            <p>Our team is composed of finance experts and tech enthusiasts who believe in the power of budgeting and tracking to improve financial health. We are committed to providing you with the best tools and support for your financial journey.</p>
+            <p>The name of the project is 'Expense Tracker', the project is created to help a user manage his finances, track his expenses, set budgets and financial goals, in one word you will save money with this project.</p>
+            <p>There are </p>
+            <p>Home page, where a user can get acquainted with our project,</p>
+            <p>About Us page, where a user can explore all the features and details of the project,</p>
+            <p>Contact Us page, where a user can tell us his suggestions and criticize, the specialists will reply him soon after the message sent,</p>
+            <p>User Authentication system with the opportunity of resetting password in case a user forget it, due to this a user can register, have his own private profile, which is visible only for him,</p>
+            <p>Profile page, where a user can log in, and use all tools in his profile, profile page is equipped with Dashboard, Settings, Report Generator and Finance Observer, also a user can stay logged in only 40 minutes each session, or till when a user close his browser, (made for security),</p>
+            <p>Dashboard, with this tool a user can write down his stable (every day, week, month) and unstable incomes and expenses, and also set goals, in the end of the month a user will get an email about reaching his goals,</p>
+            <p>Settings, there a user can change his personal information, username, password, set an profile photo and choose currency,</p>
+            <p>Report Generator, this tool generates a report about user's expenses and incomes, categorize them (for day, week, month),</p>
+            <p>Finance Observer, there a user can observer all his expenses and incomes (for, day, week, month),</p>
         </section>
     </main>
     <footer>

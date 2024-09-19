@@ -1,6 +1,6 @@
 from django.db import models
+from django.contrib import admin
 
-# Create your models here.
 
 
 class Message(models.Model):
@@ -10,3 +10,15 @@ class Message(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'email': self.email,
+            'message': self.message,
+        }
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']
+    search_fields = ['name', 'email']

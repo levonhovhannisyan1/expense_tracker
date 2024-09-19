@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
-from email.message import EmailMessage
-import smtplib
 import ssl
+import smtplib
+
+from django.shortcuts import render, redirect
+
+from email.message import EmailMessage
+
 from .models import Message
 
-# Create your views here.
 
 
 def home(request):
     
-    return render(request, 'home/home.html', {})
+    return render(request, 'home/index.html', {})
 
 
 def receive_email_message_from_customer(name, email, message_content):

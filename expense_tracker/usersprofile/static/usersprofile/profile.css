@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 header {
@@ -15,6 +16,7 @@ header {
     padding: 20px 0;
     box-sizing: border-box;
     width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -51,10 +53,26 @@ nav a:hover {
     background-color: #777;
 }
 
+.home-btn {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.5s ease;
+}
+
+.home-btn:hover {
+    color: #2cda00;
+}
+
 main {
     flex: 1;
     padding-top: 40px;
     margin-bottom: 20px;
+}
+
+.btn:hover {
+    background-color: rgb(255, 123, 34);
+    color: #333;
+    transition: color 0.4s;
 }
 
 .profile {
@@ -92,18 +110,89 @@ main {
     margin-bottom: 20px;
 }
 
+.dashboard {
+    height: 250px;
+}
+
+.dashboard h2 {
+    margin-bottom: 40px;
+}
+
+.recent-expenses {
+    height: 260px;
+}
+
+.expenses {
+    margin-top: 30px;
+}
+
+.full-dashboard {
+    margin-top: 60px;
+    float: left;
+}
+
+.dashboard h1 {
+    margin-left: 370px;
+}
+
+.view-all {
+    margin-top: 28px;
+    float: right;
+}
+
+.firstname {
+    width: 100% !important;
+}
+
+.lastname {
+    width: 100% !important;
+}
+
 .expense-reports, .settings {
-    height: 290px;
+    height: 133px;
+    text-align: center;
+}
+
+.expense-reports h2 , .settings h2 {
+    margin-top: 27px;
+}
+
+.user-info {
+    align-items: center;
+    gap: 20px;
+}
+
+.float-right {
+    text-align: center;
+    padding: 27px 0;
+}
+
+.float-left {
+    float: left;
+    width: 35%;
+}
+
+.clear {
+    clear: both;
 }
 
 .user-info img {
-    border-radius: 20px 40px 40px;
-    height: 100px;
-    width: 100px;
+    border-radius: 20px 20px 20px;
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
 }
 
 .user-info p, .dashboard p {
-    font-size: 18px;
+    font-family: 'Poppins';
+    margin: 0;
+    font-size: 21px; 
+}
+
+.recent-expenses li {
+    font-family: 'Poppins';
+    margin: 0;
+    font-size: 17px;
 }
 
 .right-sections {
@@ -116,6 +205,10 @@ main {
 .right-sections-subsection {
     display: flex;
     gap: 20px;
+}
+
+h2 {
+    margin: 0 0 20px 0;
 }
 
 .expense-reports, .settings {
@@ -141,24 +234,4 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 0;
-}
-
-@media (max-width: 768px) {
-    .sections {
-        flex-direction: column;
-    }
-    
-    .right-sections-subsection {
-        flex-direction: column;
-    }
-    
-    .user-info img {
-        height: 80px;
-        width: 80px;
-    }
-    
-    .left-sections,
-    .right-sections {
-        flex-basis: 100%;
-    }
 }

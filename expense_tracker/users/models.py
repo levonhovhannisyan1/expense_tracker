@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib import admin
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 
 class MyUser(models.Model):
@@ -11,3 +11,15 @@ class MyUser(models.Model):
 
     def __str__(self):
         return '{}'.format(self.user)
+    
+    def to_dict(self):
+        return {
+            'user': self.user.username,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+        }
+
+@admin.register(MyUser)
+class MyUserAdmin(admin.ModelAdmin):
+    list_display = ['user', 'firstname', 'lastname']
+    search_fields = ['firstname', 'lastname']

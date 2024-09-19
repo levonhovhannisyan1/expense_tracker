@@ -6,54 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ username }} - Expense Tracker</title>
     <link rel="stylesheet" href="{% static 'usersprofile/profile.css' %}">
-    <link rel="icon" type="image/x-icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+    <link rel="icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Expense Tracker</h1>
+            <a href="{% url 'home:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
             <nav>
-                <a href="#" class="btn">Logout</a>
+                <a href="{% url 'users:signout' %}" class="btn">Sign Out</a>
             </nav>
         </div>
     </header>
     <main>
         <section class="profile">
-            <h1>Your Profile</h1>
+            <h1>Your Profile {{ username }}</h1>
             <div class="sections">
                 <div class="left-sections">
                     <div class="user-info">
-                        <img src="{% static 'usersprofile/img/default_profile_img.jpg' %}" alt="Profile Photo of {{ username }}"/>
-                        <p><strong>Name: </strong>{{ firstname }}</p>
-                        <p><strong>Surname: </strong>{{ lastname }}</p>
-                        <p><strong>Username: </strong>{{ username }}</p>
-                        <p><strong>Email: </strong>{{ email }}</p>
+                        <div class="float-left">
+                            {% if profile %}
+                                <img src="{{ profile.avatar.url }}" alt="Profile avatar of {{ username }}"/>
+                            {% else %}
+                                <img src="{% static 'usersprofile/img/default-profile-img.jpg' %}" alt="Default avatar">
+                            {% endif %}
+                        </div>
+                        <div class="float-right">
+                            <div class="firstname">
+                                <p class="firstname">{{ firstname }}</p> 
+                            </div>
+                            <div class="lastname">
+                                <p class="lastname">{{ lastname }}</p>
+                            </div> 
+                        </div>
+                        <div class="clear"></div>
                     </div>
                     <div class="recent-expenses">
-                        <h2>Recent Expenses</h2>
-                        <ul>
-                            <li>Food - $50</li>
-                            <li>Rent - $400</li>
-                            <li>Utilities - $50</li>
+                        <h2>Latest Accounts</h2>
+                        <ul class="expenses">
+                            <li>Food &nbsp&nbsp&nbsp $50</li>
+                            <li>Rent &nbsp&nbsp&nbsp $400</li>
+                            <li>Utilities &nbsp&nbsp&nbsp $50</li>
+                            <li>Gas &nbsp&nbsp&nbsp $50</li>
+                            <li>Other &nbsp&nbsp&nbsp $100</li>
                         </ul>
-                        <a href="#" class="button">View All Expenses</a>
+                        <div class="view-all">
+                            <a href="#" class="button">View All Accounts</a>
+                        </div>
                     </div>
                 </div>
                 <div class="right-sections">
                     <div class="dashboard">
                         <h2>Dashboard</h2>
-                        <p>Total Expenses: $500</p>
+                        <p class="dashboard-p">Total Expenses: $500</p>
                         <p>Remaining Budget: $1000</p>
-                        <a href="#" class="button">View Full Dashboard</a>
+                        <p>expense Limit: $700</p>
+                        <div class="full-dashboard">
+                            <a href="#" class="button">View Full Dashboard</a>
+                        </div>
+                        <h1>GRAPH</h1>
                     </div>
                     <div class="right-sections-subsection">
                         <div class="expense-reports">
-                            <h2>Expense Reports</h2>
+                            <h2>Reports</h2>
                             <a href="#" class="button">Generate Reports</a>                
                         </div>
                         <div class="settings">
                             <h2>Settings</h2>
-                            <a href="#" class="button">Manage Profile Settings</a>
+                            <a href="#" class="button">Manage Settings</a>
                         </div>
                     </div>
                 </div>

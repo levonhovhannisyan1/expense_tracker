@@ -14,11 +14,12 @@ header {
     color: #fff;
     padding: 20px 0;
     box-sizing: border-box;
-    width: 100%;
+    width: 100%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .container {
-    width: 90%; 
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -51,6 +52,25 @@ nav a:hover {
     background-color: #777;
 }
 
+.home-btn {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.5s ease;
+}
+
+.home-btn:hover {
+    color: #2cda00;
+}
+
+.signin-btn:hover {
+    background-color: #2cda00 !important;
+}
+
+main {
+    flex: 1;
+    padding: 40px 0;
+}
+
 .btn-primary {
     background-color: #2cda00;
     padding: 10px 20px;
@@ -64,11 +84,6 @@ nav a:hover {
 
 .btn-primary:hover {
     background-color: #002909;
-}
-
-main {
-    flex: 1;
-    padding: 40px 0;
 }
 
 .hero {

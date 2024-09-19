@@ -1,16 +1,18 @@
+import random
+import ssl
+import smtplib
+
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
-from email.message import EmailMessage
-import smtplib
-import ssl
-import random
 from django.contrib.auth.models import User
+
+from email.message import EmailMessage
+
 from .models import MyUser
 
-# Create your views here.
 
 
 @never_cache
@@ -67,6 +69,7 @@ def sign_in(request):
         if user is not None:
 
             if user.username == 'admin':
+                login(request, user)
                 return redirect('/admin/')
             
             else:
@@ -145,7 +148,7 @@ def reset_pass(request):
         pass1 = request.POST['password1']
         pass2 = request.POST['password2']
 
-        if int(entered_code) == code:
+        if entered_code == str(code):
 
             if pass1 == pass2:
                 user = User.objects.get(email = email)

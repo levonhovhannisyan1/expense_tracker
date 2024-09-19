@@ -14,7 +14,8 @@ header {
     color: #fff;
     padding: 20px 0;
     box-sizing: border-box;
-    width: 100%;
+    width: 100%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -44,23 +45,39 @@ nav a {
     padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 nav a:hover {
     background-color: #777;
 }
 
+.home-btn {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.5s ease;
+}
+
+.home-btn:hover {
+    color: #2cda00;
+}
+
+.signin-btn:hover {
+    background-color: #2cda00 !important;
+}
+
 main {
-    padding: 20px;
+    flex: 1;
+    padding: 40px 0;
 }
 
 .about {
     background-color: #1b5e20;
     padding: 20px;
     margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    max-width: 38%;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 85%;
     border-radius: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;

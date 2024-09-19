@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - Expense Tracker</title>
     <link rel="stylesheet" href="{% static 'users/signin.css' %}">
-    <link rel="icon" type="image/x-icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
+    <link rel="icon" href="{% static 'home/img/expense-tracker-icon.ico' %}">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Expense Tracker</h1>
+            <a href="{% url 'home:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
             <nav>
-                <a href="{% url 'home:home' %}" class="btn">Home</a>
                 <a href="{% url 'home:about' %}" class="btn">About Us</a>
                 <a href="{% url 'home:contact' %}" class="btn">Contact Us</a>
             </nav>
