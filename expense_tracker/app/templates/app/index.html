@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/index.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:about' %}" class="btn">About Us</a>
+                <a href="{% url 'app:contact' %}" class="btn">Contact Us</a>
+                <a href="{% url 'app:signin' %}" class="btn signin-btn">Sign in</a>
+            </nav>
+        </div>
+    </header>    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Take Control of Your Finances</h2>
+                <p>Track your expenses, set budgets, and save money with our easy-to-use tool.</p>
+                <a href="{% url 'app:signup' %}" class="btn-primary">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'app/img/expense-tracker-image.jpg' %}" alt="Expense Tracker Image">
+            </div>            
+        </section>
+        <section class="features">
+            <h2>Why Choose Us?</h2>
+            <div class="feature-box">
+                <img src="{% static 'app/img/feature-1.jpg' %}" alt="Feature 1">
+                <h4>Easy to Use</h4>
+                <p>Our user-friendly interface makes it simple to track your spending.</p>
+            </div>
+            <div class="feature-box">
+                <img src="{% static 'app/img/feature-2.jpg' %}" alt="Feature 2">
+                <h4>Custom Budgets</h4>
+                <p>Create and manage budgets tailored to your financial goals.</p>
+            </div>
+            <div class="feature-box">
+                <img src="{% static 'app/img/feature-3.jpg' %}" alt="Feature 3">
+                <h4>Detailed Reports</h4>
+                <p>Get insights into your spending habits with our detailed reports.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{info.username}} - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/accounts.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:profile' user.username %}" class="profile-btn">Profile</a>
+                <a href="{% url 'app:signout' %}" class="btn">Sign Out</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="accounts">
+            <h2>Monthly Accounts</h2>
+            {% if messages %}
+                {% for message in messages %}
+                <div class="message">
+                    <i>{{message}}</i>
+                </div>  
+                {% endfor %}
+            {% else %}
+                <h3>Stable</h3>
+                <ol>
+                    {% for account in accounts %}
+                        {% if account.stable %}
+                            <li>
+                                <div class="accounts-param">
+                                    <span>{{account.amount}}&nbsp;{{account.account_currency}}</span>
+                                    <span>{% if account.type %}<div style="color: rgb(123, 255, 0);">Income</div>{% else %}<div style="color: rgb(255, 17, 0);">Expense</div>{% endif %}</span>
+                                    <span>{{account.category}}</span>
+                                    <span>{{account.action_date}}</span>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+                <h3>Unstable</h3>
+                <ol>
+                    {% for account in accounts %}
+                        {% if not account.stable %}
+                            <li>
+                                <div class="accounts-param">
+                                    <span>{{account.amount}}&nbsp;{{account.account_currency}}</span>
+                                    <span>{% if account.type %}<div style="color: rgb(123, 255, 0);">Income</div>{% else %}<div style="color: rgb(255, 17, 0);">Expense</div>{% endif %}</span>
+                                    <span>{{account.category}}</span>
+                                    <span>{{account.action_date}}</span>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

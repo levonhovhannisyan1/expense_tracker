@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{username}} - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/settings.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:profile' username %}" class="profile-btn">Profile</a>
+                <a href="{% url 'app:signout' %}" class="btn">Sign Out</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="settings">
+            <h2>Settings</h2>
+            <form action="{% url 'app:settings' username %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="avatar">Change Profile Picture</label>
+                <input type="file" id="avatar" name="avatar" accept="image/*">                
+                <label for="username">Change Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="firstname">Change Firstname:</label>
+                <input type="text" id="firstname" name="firstname">
+                <label for="lastname">Change Lastname:</label>
+                <input type="text" id="lastname" name="lastname">
+                <label for="email">Change Email:</label>
+                <input type="email" id="email" name="email">
+                <a href="{% url 'app:newpass' username %}" class="button">Change Password</a>
+                <button type="submit">Update</button>
+            </form>      
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/contact.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:about' %}" class="btn">About Us</a>
+                <a href="{% url 'app:contact' %}" class="btn">Contact Us</a>
+                <a href="{% url 'app:signin' %}" class="btn signin-btn">Sign in</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <form action="{% url 'app:contact' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

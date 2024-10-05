@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/signin.css' %}">
+    <link rel="icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:about' %}" class="btn">About Us</a>
+                <a href="{% url 'app:contact' %}" class="btn">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="signin">
+            <h2>Sign In</h2>
+            {% if messages %}
+                {% for message in messages %}
+                <div class="message">
+                    <i>{{ message }}</i>
+                </div>  
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'app:signin' %}" method="post">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+            <p>Don't have an account? <a href="{% url 'app:signup' %}">Sign Up</a></p>
+            <p><a href="{% url 'app:forgotpass' %}">Forgot Password?</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

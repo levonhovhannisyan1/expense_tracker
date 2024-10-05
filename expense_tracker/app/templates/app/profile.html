@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{info.username}} - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/profile.css' %}">
+    <link rel="icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:signout' %}" class="btn">Sign Out</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="profile">
+            <h1>Your Profile {{info.username}}</h1>
+            <div class="sections">
+                <div class="left-sections">
+                    <div class="user-info">
+                        <div class="float-left">
+                            {% if info.profile and info.profile.avatar %}
+                                <img src="{{info.profile.avatar.url}}" alt="Profile avatar of {{info.username}}"/>
+                            {% else %}
+                                <img src="{% static 'app/img/default-profile-img.jpg' %}" alt="Default avatar">
+                            {% endif %}
+                        </div>
+                        <div class="float-right">
+                            <div class="firstname">
+                                <p class="firstname">{{info.firstname}}</p> 
+                            </div>
+                            <div class="lastname">
+                                <p class="lastname">{{info.lastname}}</p>
+                            </div> 
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="recent-expenses">
+                        <h2>Latest Accounts</h2>
+                        <ul class="expenses">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="message">
+                                        <i>{{message}}</i>
+                                    </div>  
+                                {% endfor %}
+                            {% else %}
+                                {% for account in latest_accounts %}
+                                    {% if account.type %}
+                                        <li>{{account.category}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+{{account.amount}}&nbsp;{{account.account_currency}}</li>
+                                    {% else %}
+                                        <li>{{account.category}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-{{account.amount}}&nbsp;{{account.account_currency}}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <div class="view-all">
+                            <a href="{% url 'app:accounts' username=user.username %}" class="button">View Accounts</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-sections">
+                    <div class="dashboard">
+                        <div class="dashboard-info">
+                            <h2>Dashboard</h2>
+                            <p style="color: rgb(116, 255, 82);">Balance: {{usd_balance}}&nbsp;USD</p>
+                            <p style="color: rgb(241, 255, 44);">Goal: {{usd_balance}}/{{info.profile.goal}}&nbsp;USD</p>
+                            <p style="color: rgb(255, 139, 30);">Spent: {{usd_spent}}&nbsp;USD</p>
+                            <p style="color: rgb(255, 31, 31);">Limit: {{usd_spent}}/{{info.profile.limit}}&nbsp;USD</p>
+                            <div class="full-dashboard">
+                                <a href="{% url 'app:dashboard' username=user.username %}" class="button">View Dashboard</a>
+                            </div>
+                        </div>
+                        <div class="graph-container">
+                            <img src="{% static graph_image %}" alt="Monthly Balance Graph" class="graph">
+                        </div>
+                    </div>
+                    <div class="right-sections-subsection">
+                        <div class="expense-reports">
+                            <h2>Reports</h2>
+                            <a href="{% url 'app:report' username=user.username %}" class="button">Generate Reports</a>                
+                        </div>
+                        <div class="settings">
+                            <h2>Settings</h2>
+                            <a href="{% url 'app:settings' username=user.username %}" class="button">Manage Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>
