@@ -565,7 +565,7 @@ def fsettings(request, username):
                 user.email = email
                 user.save()
 
-            return profile(request, username)
+            return redirect(reverse('app:profile', args=[request.user.username]))
 
         else:
             return render(request, 'app/settings.html', {'username': username})
