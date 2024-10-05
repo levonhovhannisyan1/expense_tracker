@@ -1,5 +1,8 @@
 # Custom 
 expense_tracker/app/migrations
+expense_tracker/static/
+expense_tracker/media/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
