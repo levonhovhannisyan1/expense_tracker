@@ -1,5 +1,10 @@
 # expense_tracker
 
+THIS REPO IS JUST A DRAFT FOR MY DJANGO PROJECT 'EXPENSE_TRACKER'
+
+
+
+
 The name of the project is 'Expense Tracker', the project is created to help a user manage his finances, track his expenses, set budgets and financial goals, in one word you will save money with this project.
 
 There are 
