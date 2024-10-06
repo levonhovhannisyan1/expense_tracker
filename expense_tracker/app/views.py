@@ -430,7 +430,7 @@ def accounts(request, username):
 
             for account in accounts:
 
-                if account.monthly_accounts():
+                if account.stable or account.monthly_accounts():
                     accounts_list.append(account)
 
             if accounts_list:
@@ -514,7 +514,60 @@ def dashboard(request, username):
 
 @never_cache
 def report(request, username):
-    return render(request, 'app/report.html', {'username': username})
+
+    if request.user.is_authenticated and request.user.username == str(username):
+
+        if request.method == 'GET':
+            accounts = Account.objects.filter(user__username = username)
+
+            if accounts.exists():
+                total_incomes_usd = 0
+                total_expenses_usd = 0
+                account_categories = {}
+
+                account_types = {
+                    'AMD': dollar_price,
+                    'USD': 1
+                }
+
+                for account in accounts:
+
+                    if account.stable or account.monthly_accounts():
+                        
+                        if account.type:
+                            total_incomes_usd += account.amount / account_types[account.account_currency]
+
+                        else:
+                            total_expenses_usd += account.amount / account_types[account.account_currency]
+                            account_categories[account.category] = int((account.amount / account_types[account.account_currency])*100)
+
+                usd_balance = total_incomes_usd - total_expenses_usd
+                usd_spent = total_expenses_usd
+
+                for category in account_categories:
+                    account_categories[category] //= int(usd_spent)
+
+                date = datetime.now().date()
+                sum_percentage = (100*usd_spent)/total_incomes_usd
+
+                data = {
+                    'username': username,
+                    'date': date,
+                    'sum_percentage': int(sum_percentage),
+                    'total_incomes': int(total_incomes_usd),
+                    'total_expenses': int(total_expenses_usd),
+                    'balance': int(usd_balance),
+                    'categories': account_categories,
+                }
+
+            return render(request, 'app/report.html', data)
+
+        else:
+            return render(request, 'app/report.html', {'username': username})
+    
+    else:
+        messages.error(request, 'Authenticate first.')
+        return redirect('app:signin')
 
 
 @never_cache

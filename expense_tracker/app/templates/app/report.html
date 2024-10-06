@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{username}} - Expense Tracker</title>
+    <link rel="stylesheet" href="{% static 'app/report.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'app/img/expense-tracker-icon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'app:home' %}" class="home-btn"><h1>Expense Tracker</h1></a>
+            <nav>
+                <a href="{% url 'app:profile' username %}" class="profile-btn">Profile</a>
+                <a href="{% url 'app:signout' %}" class="btn">Sign Out</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="report">
+            <h2>Report</h2>
+            <p>{{date}}</p>
+            <p>You have spent {{sum_percentage}}% of your income this month.</p>
+            <p>Incomes: {{total_incomes}}$</p>
+            <p>Expenses: {{total_expenses}}$</p>
+            <p>Balance: {{balance}}$</p>
+            <p>Categories:
+                {% for key, value in categories.items %} 
+                    <ul>
+                        <li>{{key}} - {{value}}%</li> 
+                    </ul>
+                {% endfor %}
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

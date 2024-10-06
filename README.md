@@ -18,7 +18,7 @@ Dashboard, with this tool a user can write down his stable and unstable incomes 
 
 Settings, there a user can change his profile picture, personal information, username, password, set an profile photo,
 
-Report Generator, this tool generates a report about user's expenses and incomes, categorize them (for day, week, month),
+Report Generator, this tool generates a report about user's expenses and incomes, categorize them,
 
 Finance Observer, there a user can observer all his expenses and incomes (for month),
 
